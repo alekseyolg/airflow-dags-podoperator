@@ -1,5 +1,5 @@
 from airflow.providers.cncf.kubernetes.operators.kubernetes_pod import KubernetesPodOperator
-import datetime
+from datetime import datetime
 from airflow import DAG
 
 with DAG(
