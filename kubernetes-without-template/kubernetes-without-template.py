@@ -1,7 +1,15 @@
 from airflow.providers.cncf.kubernetes.operators.kubernetes_pod import KubernetesPodOperator
+from airflow import DAG
 
-k = KubernetesPodOperator(
-    name="kubernetes-without-template",
+with DAG(
+    dag_id="kubernetes-without-template",
+    schedule=None,
+    start_date=datetime.now(),
+    catchup=False,
+    tags=["example"],
+) as dag:
+  example_kubernetes_operator = KubernetesPodOperator(
+    name="kubernetes_operator", 
     image="debian",
     cmds=["bash", "-cx"],
     arguments=["echo", "10"],
@@ -12,4 +20,4 @@ k = KubernetesPodOperator(
     get_logs=True,
 )
 
-k.dry_run()
+example_kubernetes_operator.dry_run()
