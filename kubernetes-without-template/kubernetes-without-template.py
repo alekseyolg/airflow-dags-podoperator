@@ -13,7 +13,7 @@ with DAG(
     name="kubernetes_operator", 
     image="debian",
     cmds=["bash", "-cx"],
-    arguments=["echo 'Hello, world!' && sleep 600"],
+    arguments=["echo 'Hello, world!'"],
     labels={"foo": "bar"},
     task_id="dry_run_demo",
     # It is set to be able to receive logs, since after the pod has worked and is deleted, the logs are also deleted
